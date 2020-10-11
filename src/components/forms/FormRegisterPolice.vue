@@ -1,6 +1,6 @@
 <template>
   <main>
-        <form action="/login" class="needs-validation " novalidate >
+        <form :action="postPoliceMan" class="needs-validation " novalidate >
             <div class="form-row">
                 <fieldset  class="container " >
                     <legend>Cadastro Policial</legend>
@@ -25,8 +25,9 @@
                             Por favor, informe seu departamento
                         </div> 
                         
+                        <router-link to="/login">
                             <input class="btn btn-primary btn-custom" type="submit" to="Login" value="Cadastrar">
-                            <ion-icon name="person-add-outline"></ion-icon>
+                        </router-link>    
                         
                     </div>
                 </fieldset> 
@@ -44,7 +45,7 @@ export default {
          jobposition: '',
          departament: '',
          policeman: {},
-         baseURI: "https://jsonplaceholder.typicode.com/users",
+         baseURI: "http://localhost:5000/SDABackend/api/cop",
       };
     },
     methods : {

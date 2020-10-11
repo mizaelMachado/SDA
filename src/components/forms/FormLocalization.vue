@@ -84,7 +84,9 @@
                
             </div>
              <div class="footer-form ">
+                       <router-link to="/login">
                         <input id="submit" type="submit" value="Denunciar" class="btn btn-primary">
+                       </router-link> 
                         <input type="reset" class="btn btn-primary" value="Apagar">
             </div>
     </fieldset>
@@ -111,17 +113,17 @@ export default {
          lt: '',
          lg: '',
          localization: {},
-         baseURI: "https://jsonplaceholder.typicode.com/users",
+         baseURI: "http://localhost:5000/SDABackend/api/location/",
       };
     },
     methods:{
         postLocalization: function() {
                  window.addEventListener('load', function() {
                  var forms = document.getElementsByClassName('needs-validation');
-                 var validation = Array.prototype.filter.call(forms, function(form) {
+                 var persistence = Array.prototype.filter.call(forms, function(form) {
                  form.addEventListener('submit', function(event) {   
                         this.axios
-                        .post(this.baseURILocalization, {
+                        .post(this.baseURI, {
                             zipcode: this.zipcode,
                             city: this.city,
                             state:this.state,
@@ -129,8 +131,8 @@ export default {
                             street: this.street,
                             number: this.number,
                             reference: this.reference,
-                            lt: this.lt,
-                            lg: this.lg,
+                            lt: this.myCoordenates.lat,
+                            lg: this.myCoordenates.lng,
                     })
                     .then((result) => {
                     console.log(result);

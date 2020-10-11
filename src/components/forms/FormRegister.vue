@@ -1,6 +1,6 @@
 <template>
     <main>
-        <form action="/login" class="needs-validation " name ="form" novalidate >
+        <form :action="postUser" class="needs-validation " name ="form" novalidate >
             <div class="form-row">
                 <fieldset  class="container " >
                     <legend>Cadastro</legend>
@@ -67,8 +67,9 @@
                             </div>
                         </div> <br>
                     
-                            <input type="submit" class="btn btn-primary btn-custom"  value="Cadastrar">
-                            <ion-icon name="person-add-outline"></ion-icon>
+              
+                               <input  type="submit" class="btn btn-primary btn-custom"  value="Cadastrar">
+                     
                      
                         
                     </div>
@@ -103,7 +104,7 @@ export default {
       password: "",
       user: {},
       users: [],
-      baseURI: "https://jsonplaceholder.typicode.com/users",
+      baseURI: "http://localhost:5000/SDABackend/api/users",
     };
   },
   methods: {

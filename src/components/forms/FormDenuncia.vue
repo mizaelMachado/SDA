@@ -78,7 +78,7 @@ export default {
          //imagens e documento
          description: '',
          complaint: {},
-         baseURI: "https://jsonplaceholder.typicode.com/users",
+         baseURI: "http://localhost:5000/SDABackend/api/complaint/",
       };
     },
     postComplaint: function(){
