@@ -1,6 +1,6 @@
 <template>
     <main>
-        <form action="" class="needs-validation " name ="form" novalidate method="post">
+        <form action="/login" class="needs-validation " name ="form" novalidate >
             <div class="form-row">
                 <fieldset  class="container " >
                     <legend>Cadastro</legend>
@@ -42,14 +42,14 @@
                     </div>
                     <label>Senha:</label>
                     <div class="col-md-6 mb-3">
-                        <input  class="form-control" required  type="password" name="password1" id="password1"><br>  
+                        <input  class="form-control" required  type="password" v-model="password1" name="" ><br>  
                         <div class="invalid-feedback">
                             Por favor, Informe sua senha.
                         </div> 
                     </div> 
                     <label>Confirme sua senha:</label>
                     <div class="col-md-6 mb-3">
-                        <input  class="form-control" required  type="password" name="password2" id="password2"><br>  
+                        <input  class="form-control" required  type="password"  v-model="password2" name="" ><br>  
                         <div class="invalid-feedback">
                             Por favor, Insira a confirmação da senha.
                         </div> 
@@ -57,7 +57,7 @@
 
                     <div class="footer-form">
                         <div class="form-check">
-                            <a href="policeRegister.html">Sou policial</a><br>
+                            <router-link to="/cadastro/policial">Sou policial</router-link><br>
                             <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
                             <label class="form-check-label" for="invalidCheck" id="label-check">
                              Não sou um robô.
@@ -67,7 +67,7 @@
                             </div>
                         </div> <br>
                     
-                            <input type="submit" class="btn btn-primary btn-custom" value="Cadastrar">
+                            <input type="submit" class="btn btn-primary btn-custom"  value="Cadastrar">
                             <ion-icon name="person-add-outline"></ion-icon>
                      
                         
@@ -82,25 +82,8 @@
 (function() {
   'use strict';
   window.addEventListener('load', function() {
-    var forms = document.getElementsByClassName('needs-validation');
-    var inputs = document.getElementsByClassName('form-control');
-    var myStorage = window.localStorage;
     var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if(inputs['password1'].value ==  inputs['password2'].value){
-          var data ={
-              'cpf': inputs['cpf'].value,
-              'name': inputs['name'].value,
-              'email' : inputs['email'].value,
-              'state': inputs['state'].value,
-              'city': inputs['city'].value,
-              'password': inputs['password1'].value 
-            }
-          myStorage.setItem( inputs['email'].value, JSON.stringify(data));
-        }else{
-          alert("as senhas não correspondem");
-        }
-           
+      form.addEventListener('submit', function(event) {    
         if (form.checkValidity() === false) {
           event.preventDefault();
           event.stopPropagation();
@@ -110,7 +93,40 @@
     });
   }, false);
 })();
+export default {
+  name: "Users",
+  data() {
+    return {
+      cpf: 0,
+      name: "",
+      email: "",
+      password: "",
+      user: {},
+      users: [],
+      baseURI: "https://jsonplaceholder.typicode.com/users",
+    };
+  },
+  methods: {
+    postUser: function() {
+        if(this.password1 == this.password2){ 
+            this.axios
+                .post(this.baseURI, {
+                    cpf : this.cpf,
+                    name: this.name,
+                    email: this.email,
+                    password: this.password,
+                })
+                .then((result) => {
+                console.log(result);
+                this.user = result.data;
+                });
+        } else{
+            alert("senhas não correspondem");
 
+        }      
+    },
+  },
+}; 
 </script>
 
 <style>

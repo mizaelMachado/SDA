@@ -8,10 +8,10 @@
                    <div class="collapse navbar-collapse " id="navbarNav">
                         <ul class="navbar-nav ">
                             <li class="nav-item ">
-                                <a class="nav-link" href="login.html">
+                                <router-link class="nav-link" to="/login">
                                     Login
                                     <font-awesome-icon icon="arrow-alt-from-left" />
-                                </a>
+                                </router-link>
                             </li>
                         </ul>
                     </div>

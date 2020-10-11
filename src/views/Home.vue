@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+  
       <NavBar />
       <main class="container" role="main" >
         <Card />

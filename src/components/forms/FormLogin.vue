@@ -10,7 +10,7 @@
                 </p>
             </div>
             <div class="right">
-                <form action="index.html" class="needs-validation" novalidate method="post">
+                <form action="/inicio" class="needs-validation" novalidate>
                     <div class="form-row">
                         <fieldset  class="container " >
                             <legend>Login</legend>
@@ -32,7 +32,7 @@
 
                             <div class="footer-form">
                                 <div class="form-check">
-                                    <a href="register.html">Cadastre-se</a><br>
+                                    <router-link to="/cadastro">Cadastre-se</router-link><br>
                                     <a href="#">Esqueci minha senha</a><br>
                                     <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
                                     <label class="form-check-label" for="invalidCheck" id="label-check">
@@ -55,7 +55,19 @@
 <script>
 
 export default {
-    name:'FormLogin'
+    name:'FormLogin',
+    methods: {
+        fetchUserByEmail: function() {
+            this.axios
+            .get(this.baseURI + "/" + this.email)
+            .then((result) => {
+               // this.user = result.data;
+            })
+            .catch(function(error) {
+                 console.log(error);
+            });
+        },
+    }
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="form-localization-BO">
     
-            <form action="" class="needs-validation " novalidate method="post">
+            <form action="/bo" class="needs-validation " novalidate >
                 <div class="form-row">
                     <fieldset  class="container ">
                         <legend>Pesquisar Boletins de ocorrência:</legend><br>

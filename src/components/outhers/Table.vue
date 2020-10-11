@@ -6,7 +6,7 @@
                     <td>Boletins de ocorrência:</td>
                 </tr>
                 <tr>
-                    <td> <a href="BO.html">Cidade: Crateús,Estado CE,Infração: Contrabando </a></td>
+                    <td> <router-link to="/bo">Cidade: Crateús,Estado CE,Infração: Contrabando </router-link></td>
                 </tr>
                 <tr>
                     <td> <a href="#">Cidade: Pedro II,Estado PI,Infração:Sonegação Fiscal</a></td>

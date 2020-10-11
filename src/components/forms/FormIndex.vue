@@ -10,7 +10,7 @@
                     <FormDenuncia />
                     <FormLocalizacao />
                    
-                </div>
+                </div> 
             </form>
 
         </main>
@@ -44,7 +44,7 @@ export default {
     components:{
         FormDenuncia,
         FormLocalizacao
-    }
+    },  
 }
 
 </script>
